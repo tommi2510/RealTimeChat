@@ -1,6 +1,6 @@
 var mongo = require('mongodb').MongoClient;
 
-var Database = process.env.DATABASE_URL;
+var Database = process.env.MONGOLAB_URI;
 
 module.exports = function (io) {
   mongo.connect(Database, function(err, db){
@@ -61,7 +61,7 @@ module.exports = function (io) {
           } else {
             coll.insert({name: name, message: message}, function(){
               //emit latest message to all clients
-              io.emit('output', [data]);
+              nsp.emit('output', [data]);
 
               sendStatus({
                 message: 'Message sent',

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   var url = window.location.href;
-  
+
   try {
     var socket = io.connect(url);
   } catch(e) {
