@@ -1,7 +1,8 @@
 var mongo = require('mongodb').MongoClient;
 
+var Database = process.env.DATABASE_URL;
 module.exports = function (io) {
-  mongo.connect('mongodb://127.0.0.1/chat', function(err, db){
+  mongo.connect(Database, function(err, db){
     if(err){
       throw err;
     }
@@ -73,7 +74,7 @@ module.exports = function (io) {
         socket.on('disconnect', function(){
           if (addedUser) {
             delete users[socket.username];
-          
+
 
             io.emit('loggedIn', {
               users : users

@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   try {
-    var socket = io.connect('http://127.0.0.1:3000');
+    var socket = io.connect('http://localhost:1337');
   } catch(e) {
     //set status to warn user
-
+    
   }
 
   if(socket !== undefined){
