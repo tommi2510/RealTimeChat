@@ -1,6 +1,7 @@
 var mongo = require('mongodb').MongoClient;
 
 var Database = process.env.DATABASE_URL;
+
 module.exports = function (io) {
   mongo.connect(Database, function(err, db){
     if(err){
@@ -9,8 +10,8 @@ module.exports = function (io) {
 
     var users = {};
 
-
-    io.on('connection', function(socket){
+    var nsp = io.of('/chat');
+    nsp.on('connection', function(socket){
 
       var addedUser = false;
 
@@ -40,7 +41,7 @@ module.exports = function (io) {
 
           addedUser = true;
 
-          io.emit('loggedIn', {
+          nsp.emit('loggedIn', {
             users : users
           });
 
@@ -76,7 +77,7 @@ module.exports = function (io) {
             delete users[socket.username];
 
 
-            io.emit('loggedIn', {
+            nsp.emit('loggedIn', {
               users : users
             });
           }

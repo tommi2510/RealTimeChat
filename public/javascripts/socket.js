@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
   }
 
-
+  var url = window.location.href;
+  
   try {
-    var socket = io.connect('http://localhost:1337');
+    var socket = io.connect(url);
   } catch(e) {
     //set status to warn user
-    
+
   }
 
   if(socket !== undefined){
