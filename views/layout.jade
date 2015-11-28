@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='semantic/out/semantic.min.css')
+    
+  body
+
+    div(class="ui container fluid")
+      div(class="ui inverted menu")
+        a(class="item" href="/") Home
+        a(class="item" href="/chat") Chat
+        div(class="menu right")
+          div(class="item")
+          if user 
+            a(class="item" href="/logout") Log out
+          else
+            a(class="item" href="/login") Log in
+            a(class="item" href="/signup") Sign Up
+            
+    div(class="ui bottom attached segment pushable")
+      div(class="ui visible inverted left vertical sidebar menu")
+        h3(class="item") Users 
+          span(class="span-green") online
+       
+      div(class="pusher") 
+        div(class="ui basic segment")
+          div(class="chat")
+              div(class="chat-name")= username
+              div(class="chat-messages")
+              textarea(placeholder="Type your message")
+              div(class="chat-status") Status: 
+                span Idle
+  
+  
+    
+      
+    
+    
+  
+    block content
+    script(src="bower_components/jquery/dist/jquery.min.js")
+    script(src="semantic/out/semantic.min.js")
+    script(src="http://127.0.0.1:3000/socket.io/socket.io.js")
+    
+    

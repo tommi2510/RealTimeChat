@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='semantic/out/semantic.min.css')
+    
+  body(class="greyBackground")
+  div(class="ui container fluid")
+    div(class="clear")
+      div(class="ui inverted menu")
+        a(class="item" href="/") Home
+        a(class="item" href="/chat") Chat
+        div(class="menu right")
+          div(class="item")
+          if user 
+            a(class="item" href="/logout") Log out
+          else
+            a(class="item" href="/login") Log in
+            a(class="item" href="/signup") Sign Up
+  
+    block content
+    script(src="bower_components/jquery/dist/jquery.min.js")
+    script(src="javascripts/main.js")
+    script(src="semantic/out/semantic.min.js")

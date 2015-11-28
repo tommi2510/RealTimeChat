@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='semantic/out/semantic.min.css')
+    
+  body
+  div(class="ui container fluid img-back")
+    div(class="clear")
+      div(class="ui inverted large menu")
+        a(class="item" href="/") Home
+        a(class="item" href="/chat") Chat
+        div(class="menu right")
+          div(class="item")
+          if user 
+            a(class="item" href="/logout") Log out
+          else
+            a(class="item" href="/login") Log in
+            a(class="item" href="/signup") Sign Up
+    div(class="ui huge header center aligned inverted") Chat with people from all around the world
+    a(href="/signup")
+      div(class="buttonHeader") Get started
+  block content
+  script(src="bower_components/jquery/dist/jquery.min.js")
+  script(src="javascripts/main.js")
+  script(src="semantic/out/semantic.min.js")
